@@ -2,29 +2,37 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "creation": "2025-05-23 12:29:16.594235",
+ "creation": "2025-07-13 13:39:20.729346",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "tribe_name"
+  "region_name",
+  "region_manager"
  ],
  "fields": [
   {
-   "fieldname": "tribe_name",
+   "fieldname": "region_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Tribe Name",
+   "label": "Region Name",
    "reqd": 1,
    "unique": 1
+  },
+  {
+   "fieldname": "region_manager",
+   "fieldtype": "Link",
+   "label": "Region Manager",
+   "options": "Employee",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-13 10:59:43.808961",
+ "modified": "2025-07-13 14:57:11.129200",
  "modified_by": "Administrator",
  "module": "rb",
- "name": "Tribes",
+ "name": "Region",
  "owner": "Administrator",
  "permissions": [
   {
@@ -45,5 +53,5 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "tribe_name"
+ "title_field": "region_name"
 }

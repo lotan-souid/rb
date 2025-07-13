@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2025-05-22 15:28:43.860803",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "arrangement_file_number",
+  "arrangement_file_status",
+  "assign_lot",
+  "coordinator",
+  "manager_region"
+ ],
+ "fields": [
+  {
+   "fieldname": "arrangement_file_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Arrangement File Number",
+   "reqd": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "arrangement_file_status",
+   "fieldtype": "Select",
+   "label": "Arrangement File Status",
+   "options": "\u05ea\u05d9\u05e7 \u05d1\u05d4\u05db\u05e0\u05d4\n\u05d4\u05d5\u05e9\u05dc\u05dd\n\u05de\u05e9\u05d0 \u05d5\u05de\u05ea\u05df\n\u05d3\u05d9\u05d5\u05df \u05de\u05e9\u05e4\u05d8\u05d9"
+  },
+  {
+   "fieldname": "assign_lot",
+   "fieldtype": "Link",
+   "label": "Assign Lot",
+   "options": "Lots"
+  },
+  {
+   "fieldname": "coordinator",
+   "fieldtype": "Link",
+   "label": "Coordinator",
+   "options": "Employee"
+  },
+  {
+   "fieldname": "manager_region",
+   "fieldtype": "Link",
+   "label": "Manager Region",
+   "options": "Employee"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2025-05-23 12:16:45.123142",
+ "modified_by": "Administrator",
+ "module": "rb",
+ "name": "Arrangement File",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
