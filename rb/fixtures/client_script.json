@@ -1,0 +1,57 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Cluster",
+  "enabled": 0,
+  "modified": "2025-07-13 14:25:01.885748",
+  "module": "rb",
+  "name": "filter employee by designation",
+  "script": "frappe.ui.form.on('Cluster', {\r\n    onload: function(frm) {\r\n        frm.set_query('region_manager', function() {\r\n            return {\r\n                filters: {\r\n                    designation: 'מנהל מרחב'\r\n                }\r\n            };\r\n        });\r\n\r\n        frm.set_query('coordinator', function() {\r\n            return {\r\n                filters: {\r\n                    designation: 'רכז הסדרה'\r\n                }\r\n            };\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Cluster",
+  "enabled": 1,
+  "modified": "2025-07-13 14:28:12.899642",
+  "module": "rb",
+  "name": "get employee by region and sectors",
+  "script": "frappe.ui.form.on('Cluster', {\r\n    sector: async function(frm) {\r\n        if (!frm.doc.sector) return;\r\n\r\n        // שליפה של פרטי הגזרה\r\n        frappe.call({\r\n            method: \"frappe.client.get\",\r\n            args: {\r\n                doctype: \"Sector\",\r\n                name: frm.doc.sector\r\n            },\r\n            callback: function(res) {\r\n                if (res.message) {\r\n                    const sector = res.message;\r\n\r\n                    // עדכון הרכז מה־Sector\r\n                    frm.set_value(\"coordinator\", sector.coordinator);\r\n\r\n                    // שליפה של המרחב לפי Link\r\n                    if (sector.region) {\r\n                        frappe.call({\r\n                            method: \"frappe.client.get\",\r\n                            args: {\r\n                                doctype: \"Region\",\r\n                                name: sector.region\r\n                            },\r\n                            callback: function(region_res) {\r\n                                if (region_res.message) {\r\n                                    frm.set_value(\"region_manager\", region_res.message.region_manager);\r\n                                }\r\n                            }\r\n                        });\r\n                    }\r\n                }\r\n            }\r\n        });\r\n    }\r\n});\r\n",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Sector",
+  "enabled": 1,
+  "modified": "2025-07-13 14:07:29.063621",
+  "module": "rb",
+  "name": "filter employee by designation sector",
+  "script": "frappe.ui.form.on('Sector', {\r\n    onload: function(frm) {\r\n\r\n        frm.set_query('coordinator', function() {\r\n            return {\r\n                filters: {\r\n                    designation: 'רכז הסדרה'\r\n                }\r\n            };\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Region",
+  "enabled": 1,
+  "modified": "2025-07-13 14:12:28.559392",
+  "module": "rb",
+  "name": "filter employee by designation region",
+  "script": "frappe.ui.form.on('Region', {\r\n    onload: function(frm) {\r\n\r\n        frm.set_query('region_manager', function() {\r\n            return {\r\n                filters: {\r\n                    designation: 'מנהל מרחב'\r\n                }\r\n            };\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Cluster",
+  "enabled": 0,
+  "modified": "2025-07-13 14:21:21.776164",
+  "module": "rb",
+  "name": "get employees by sector script",
+  "script": "frappe.ui.form.on('Cluster', {\r\n    sector: async function(frm) {\r\n        if (!frm.doc.sector) return;\r\n\r\n        // שליפה של פרטי הגזרה\r\n        frappe.call({\r\n            method: \"frappe.client.get\",\r\n            args: {\r\n                doctype: \"Sector\",\r\n                name: frm.doc.sector\r\n            },\r\n            callback: function(res) {\r\n                if (res.message) {\r\n                    const sector = res.message;\r\n\r\n                    // עדכון הרכז מה־Sector\r\n                    frm.set_value(\"coordinator\", sector.coordinator);\r\n\r\n                    // שליפה של המרחב לפי Link\r\n                    if (sector.region) {\r\n                        frappe.call({\r\n                            method: \"frappe.client.get\",\r\n                            args: {\r\n                                doctype: \"Region\",\r\n                                name: sector.region\r\n                            },\r\n                            callback: function(region_res) {\r\n                                if (region_res.message) {\r\n                                    frm.set_value(\"region_manager\", region_res.message.region_manager);\r\n                                }\r\n                            }\r\n                        });\r\n                    }\r\n                }\r\n            }\r\n        });\r\n    }\r\n});\r\n",
+  "view": "Form"
+ }
+]
