@@ -39,7 +39,7 @@
    "fieldname": "tribe_name",
    "fieldtype": "Link",
    "label": "Tribe Name",
-   "options": "Tribes",
+   "options": "Tribe",
    "reqd": 1
   },
   {
@@ -112,7 +112,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-13 14:15:27.707785",
+ "modified": "2025-07-13 22:01:42.822300",
  "modified_by": "Administrator",
  "module": "rb",
  "name": "Cluster",

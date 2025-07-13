@@ -5,5 +5,5 @@
 from frappe.model.document import Document
 
 
-class Tribes(Document):
+class Tribe(Document):
 	pass
