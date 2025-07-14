@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "format:C{####}",
  "creation": "2025-05-22 15:11:35.658340",
@@ -12,6 +13,7 @@
   "cluster_status",
   "agreement_type",
   "sector",
+  "cluster_priority",
   "column_break_ukob",
   "buildings_count",
   "cluster_population",
@@ -107,12 +109,19 @@
    "options": "Sector",
    "reqd": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "cluster_priority",
+   "fieldtype": "Select",
+   "label": "Cluster Priority",
+   "options": "\u05e7\u05d1\u05d5\u05e6\u05d4 \u05d0\n\u05e7\u05d1\u05d5\u05e6\u05d4 \u05d1\n\u05e7\u05d1\u05d5\u05e6\u05d4 \u05d2",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-13 22:01:42.822300",
+ "modified": "2025-07-14 21:06:01.869156",
  "modified_by": "Administrator",
  "module": "rb",
  "name": "Cluster",
@@ -137,6 +146,5 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "cluster_number",
- "translated_doctype": 1
+ "title_field": "cluster_number"
 }

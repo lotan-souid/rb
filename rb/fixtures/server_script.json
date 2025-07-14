@@ -1,1 +1,40 @@
-[]
+[
+ {
+  "allow_guest": 0,
+  "api_method": null,
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "After Save",
+  "enable_rate_limit": 0,
+  "event_frequency": "All",
+  "modified": "2025-07-14 22:12:28.996942",
+  "module": "rb",
+  "name": "sync arrangement to evacuees",
+  "rate_limit_count": 5,
+  "rate_limit_seconds": 86400,
+  "reference_doctype": "Arrangement File",
+  "script": "if doc.evacuee_a:\n    evacuee_1 = frappe.get_doc(\"Evacuee\", doc.evacuee_a)\n    evacuee_1.arrangement_file = doc.name\n    evacuee_1.save()\n\nif doc.evacuee_b:\n    evacuee_2 = frappe.get_doc(\"Evacuee\", doc.evacuee_b)\n    evacuee_2.arrangement_file = doc.name\n    evacuee_2.save()\n",
+  "script_type": "DocType Event"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": null,
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Save",
+  "enable_rate_limit": 0,
+  "event_frequency": "All",
+  "modified": "2025-07-14 22:59:54.688500",
+  "module": "rb",
+  "name": "validate evacuee in arrangement file",
+  "rate_limit_count": 5,
+  "rate_limit_seconds": 86400,
+  "reference_doctype": "Arrangement File",
+  "script": "# מניעת בחירה כפולה בטופס\nif doc.evacuee_a and doc.evacuee_b and doc.evacuee_a == doc.evacuee_b:\n    frappe.throw(\"לא ניתן לבחור את אותו מתפנה פעמיים.\")\n\n# בדיקת מתפנה ראשון\nif doc.evacuee_a:\n    evacuee_1 = frappe.get_doc(\"Evacuee\", doc.evacuee_a)\n    if evacuee_1.arrangement_file and evacuee_1.arrangement_file != doc.name:\n        frappe.throw(f\"המתפנה {evacuee_1.full_name} כבר משוייך לתיק הסדרה אחר ({evacuee_1.arrangement_file})\")\n\n# בדיקת מתפנה שני\nif doc.evacuee_b:\n    evacuee_2 = frappe.get_doc(\"Evacuee\", doc.evacuee_b)\n    if evacuee_2.arrangement_file and evacuee_2.arrangement_file != doc.name:\n        frappe.throw(f\"המתפנה {evacuee_2.full_name} כבר משוייך לתיק הסדרה אחר ({evacuee_2.arrangement_file})\")\n",
+  "script_type": "DocType Event"
+ }
+]

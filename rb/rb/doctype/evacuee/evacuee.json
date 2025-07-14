@@ -12,14 +12,21 @@
   "identification_number",
   "column_break_dspj",
   "cluster",
-  "arrangement_file_status",
   "arrangement_file",
+  "section_break_dztf",
+  "column_break_obkn",
+  "arrangement_file_status",
   "assign_lot"
  ],
  "fields": [
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
+   "in_filter": 1,
+   "in_global_search": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
    "label": "Full Name",
    "read_only": 1,
    "search_index": 1
@@ -58,14 +65,14 @@
    "fieldname": "arrangement_file",
    "fieldtype": "Link",
    "label": "Arrangement File",
-   "options": "Arrangement File",
-   "reqd": 1
+   "options": "Arrangement File"
   },
   {
    "fetch_from": "arrangement_file.arrangement_file_status",
    "fieldname": "arrangement_file_status",
-   "fieldtype": "Read Only",
-   "label": "Arrangement File Status"
+   "fieldtype": "Data",
+   "label": "Arrangement File Status",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_dspj",
@@ -74,14 +81,25 @@
   {
    "fetch_from": "arrangement_file.assign_lot",
    "fieldname": "assign_lot",
-   "fieldtype": "Read Only",
+   "fieldtype": "Data",
    "label": "Assign Lot"
+  },
+  {
+   "collapsible_depends_on": "eval:doc.arrangement_file;",
+   "fieldname": "section_break_dztf",
+   "fieldtype": "Section Break",
+   "label": "Arrangement File Detail "
+  },
+  {
+   "depends_on": "eval:doc.arrangement_file;\r\n",
+   "fieldname": "column_break_obkn",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-13 15:04:41.703695",
+ "modified": "2025-07-14 22:56:20.648265",
  "modified_by": "Administrator",
  "module": "rb",
  "name": "Evacuee",
@@ -105,6 +123,5 @@
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "full_name",
- "translated_doctype": 1
+ "title_field": "full_name"
 }

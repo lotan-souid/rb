@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "creation": "2025-05-22 15:28:43.860803",
  "doctype": "DocType",
@@ -8,8 +9,11 @@
   "arrangement_file_number",
   "arrangement_file_status",
   "assign_lot",
+  "cluster",
   "coordinator",
-  "manager_region"
+  "manager_region",
+  "evacuee_a",
+  "evacuee_b"
  ],
  "fields": [
   {
@@ -33,22 +37,43 @@
    "options": "Lots"
   },
   {
+   "fetch_from": "cluster.coordinator",
    "fieldname": "coordinator",
    "fieldtype": "Link",
    "label": "Coordinator",
    "options": "Employee"
   },
   {
+   "fetch_from": "cluster.region_manager",
    "fieldname": "manager_region",
    "fieldtype": "Link",
    "label": "Manager Region",
    "options": "Employee"
+  },
+  {
+   "fieldname": "cluster",
+   "fieldtype": "Link",
+   "label": "Cluster",
+   "options": "Cluster"
+  },
+  {
+   "fieldname": "evacuee_a",
+   "fieldtype": "Link",
+   "label": "Evacuee A",
+   "options": "Evacuee",
+   "reqd": 1
+  },
+  {
+   "fieldname": "evacuee_b",
+   "fieldtype": "Link",
+   "label": "Evacuee B",
+   "options": "Evacuee"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-05-23 12:16:45.123142",
+ "modified": "2025-07-14 22:16:03.699442",
  "modified_by": "Administrator",
  "module": "rb",
  "name": "Arrangement File",
@@ -68,7 +93,9 @@
   }
  ],
  "row_format": "Dynamic",
+ "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "title_field": "arrangement_file_number"
 }
