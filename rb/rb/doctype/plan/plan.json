@@ -12,6 +12,7 @@
   "plan_status",
   "update_status_date",
   "planning_committee",
+  "planning_zone",
   "outsourcing_project_manager",
   "development_file_number"
  ],
@@ -55,12 +56,18 @@
    "fieldtype": "Link",
    "label": "Development File Number",
    "options": "Development File"
+  },
+  {
+   "fieldname": "planning_zone",
+   "fieldtype": "Link",
+   "label": "Planning Zone",
+   "options": "Planning Zone"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-13 15:04:36.051440",
+ "modified": "2025-07-16 14:58:12.145599",
  "modified_by": "Administrator",
  "module": "rb",
  "name": "Plan",

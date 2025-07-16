@@ -12,8 +12,13 @@
   "cluster",
   "coordinator",
   "manager_region",
+  "column_break_rqds",
+  "evacuee_section",
   "evacuee_a",
-  "evacuee_b"
+  "evacuee_b",
+  "column_break_uiry",
+  "evacuee_a_phone_number",
+  "evacuee_b_phone_number"
  ],
  "fields": [
   {
@@ -34,7 +39,7 @@
    "fieldname": "assign_lot",
    "fieldtype": "Link",
    "label": "Assign Lot",
-   "options": "Lots"
+   "options": "Lot"
   },
   {
    "fetch_from": "cluster.coordinator",
@@ -68,12 +73,37 @@
    "fieldtype": "Link",
    "label": "Evacuee B",
    "options": "Evacuee"
+  },
+  {
+   "fieldname": "column_break_rqds",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "evacuee_section",
+   "fieldtype": "Section Break",
+   "label": "Evacuee"
+  },
+  {
+   "fieldname": "column_break_uiry",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "evacuee_a.phone_number",
+   "fieldname": "evacuee_a_phone_number",
+   "fieldtype": "Data",
+   "label": "Evacuee A Phone Number"
+  },
+  {
+   "fetch_from": "evacuee_b.phone_number",
+   "fieldname": "evacuee_b_phone_number",
+   "fieldtype": "Data",
+   "label": "Evacuee B Phone Number"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-14 22:16:03.699442",
+ "modified": "2025-07-16 12:18:42.323603",
  "modified_by": "Administrator",
  "module": "rb",
  "name": "Arrangement File",
