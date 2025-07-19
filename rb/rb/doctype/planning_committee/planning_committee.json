@@ -2,26 +2,40 @@
  "actions": [],
  "allow_import": 1,
  "allow_rename": 1,
- "creation": "2025-07-16 13:06:28.536905",
+ "creation": "2025-07-18 21:29:59.957649",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "planning_zone_name"
+  "committiee_name",
+  "region",
+  "planning_zone"
  ],
  "fields": [
   {
-   "fieldname": "planning_zone_name",
+   "fieldname": "committiee_name",
    "fieldtype": "Data",
-   "label": "Planning Zone Name"
+   "label": "Committee Name"
+  },
+  {
+   "fieldname": "region",
+   "fieldtype": "Link",
+   "label": "Region",
+   "options": "Region"
+  },
+  {
+   "fieldname": "planning_zone",
+   "fieldtype": "Link",
+   "label": "Planning Zone",
+   "options": "Planning Zone"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-18 21:37:00.577891",
+ "modified": "2025-07-18 21:33:09.204936",
  "modified_by": "Administrator",
  "module": "rb",
- "name": "Planning Zone",
+ "name": "Planning Committee",
  "owner": "Administrator",
  "permissions": [
   {
@@ -38,10 +52,9 @@
   }
  ],
  "row_format": "Dynamic",
- "show_preview_popup": 1,
  "show_title_field_in_link": 1,
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "planning_zone_name"
+ "title_field": "committiee_name"
 }

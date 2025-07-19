@@ -9,17 +9,14 @@
   "full_name",
   "first_name",
   "last_name",
-  "identification_number",
   "date_of_birth",
+  "identification_number",
+  "column_break_dspj",
   "phone_number",
   "email",
-  "column_break_dspj",
+  "column_break_cmzj",
   "cluster",
-  "arrangement_file",
-  "section_break_dztf",
-  "column_break_obkn",
-  "arrangement_file_status",
-  "assign_lot"
+  "customer"
  ],
  "fields": [
   {
@@ -49,59 +46,22 @@
    "reqd": 1
   },
   {
-   "fieldname": "identification_number",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Identification Number",
-   "reqd": 1,
-   "search_index": 1
-  },
-  {
    "fieldname": "cluster",
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Cluster",
-   "options": "Cluster",
-   "reqd": 1
-  },
-  {
-   "fieldname": "arrangement_file",
-   "fieldtype": "Link",
-   "label": "Arrangement File",
-   "options": "Arrangement File"
-  },
-  {
-   "fetch_from": "arrangement_file.arrangement_file_status",
-   "fieldname": "arrangement_file_status",
-   "fieldtype": "Data",
-   "label": "Arrangement File Status",
-   "read_only": 1
+   "mandatory_depends_on": "eval:doc.customer;",
+   "options": "Cluster"
   },
   {
    "fieldname": "column_break_dspj",
    "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "arrangement_file.assign_lot",
-   "fieldname": "assign_lot",
-   "fieldtype": "Data",
-   "label": "Assign Lot"
-  },
-  {
-   "collapsible_depends_on": "eval:doc.arrangement_file;",
-   "fieldname": "section_break_dztf",
-   "fieldtype": "Section Break",
-   "label": "Arrangement File Detail "
-  },
-  {
-   "depends_on": "eval:doc.arrangement_file;\r\n",
-   "fieldname": "column_break_obkn",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "phone_number",
-   "fieldtype": "Phone",
-   "label": "Phone Number"
+   "fieldtype": "Data",
+   "label": "Phone Number",
+   "options": "Phone"
   },
   {
    "fieldname": "email",
@@ -112,13 +72,32 @@
   {
    "fieldname": "date_of_birth",
    "fieldtype": "Date",
-   "label": "Date Of Birth"
+   "label": "Date Of Birth",
+   "mandatory_depends_on": "eval:doc.customer;"
+  },
+  {
+   "fieldname": "identification_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Identification Number",
+   "mandatory_depends_on": "eval:doc.customer;",
+   "search_index": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "column_break_cmzj",
+   "fieldtype": "Column Break"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-16 12:26:53.653346",
+ "modified": "2025-07-17 23:50:16.050772",
  "modified_by": "Administrator",
  "module": "rb",
  "name": "Evacuee",

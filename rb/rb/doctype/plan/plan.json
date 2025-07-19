@@ -8,13 +8,15 @@
  "engine": "InnoDB",
  "field_order": [
   "plan_number",
+  "plan_type",
   "start_date",
   "plan_status",
   "update_status_date",
   "planning_committee",
   "planning_zone",
   "outsourcing_project_manager",
-  "development_file_number"
+  "development_file_number",
+  "plan_documents"
  ],
  "fields": [
   {
@@ -33,8 +35,9 @@
   },
   {
    "fieldname": "planning_committee",
-   "fieldtype": "Data",
-   "label": "Planning Committee"
+   "fieldtype": "Link",
+   "label": "Planning Committee",
+   "options": "Planning Committee"
   },
   {
    "fieldname": "start_date",
@@ -58,16 +61,31 @@
    "options": "Development File"
   },
   {
+   "fetch_from": "planning_committee.planning_zone",
    "fieldname": "planning_zone",
    "fieldtype": "Link",
    "label": "Planning Zone",
-   "options": "Planning Zone"
+   "options": "Planning Zone",
+   "read_only": 1
+  },
+  {
+   "default": "\u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05de\u05e4\u05d5\u05e8\u05d8\u05ea",
+   "fieldname": "plan_type",
+   "fieldtype": "Select",
+   "label": "Plan Type",
+   "options": "\u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05de\u05ea\u05d0\u05e8 \u05de\u05e7\u05d5\u05de\u05d9\u05ea\n\u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05de\u05e4\u05d5\u05e8\u05d8\u05ea\n\u05ea\u05d5\u05db\u05e0\u05d9\u05ea \u05ea\u05e7\u05e0\u05d5\u05e0\u05d9\u05ea",
+   "reqd": 1
+  },
+  {
+   "fieldname": "plan_documents",
+   "fieldtype": "Attach",
+   "label": "Plan Documents"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-16 14:58:12.145599",
+ "modified": "2025-07-19 23:02:20.139379",
  "modified_by": "Administrator",
  "module": "rb",
  "name": "Plan",

@@ -20,7 +20,11 @@
   "eligibles_count",
   "section_break_snlk",
   "region_manager",
-  "coordinator"
+  "coordinator",
+  "section_break_twco",
+  "coordinator_user_id",
+  "coordinator_user_title",
+  "sector_title"
  ],
  "fields": [
   {
@@ -116,12 +120,39 @@
    "label": "Cluster Priority",
    "options": "\u05e7\u05d1\u05d5\u05e6\u05d4 \u05d0\n\u05e7\u05d1\u05d5\u05e6\u05d4 \u05d1\n\u05e7\u05d1\u05d5\u05e6\u05d4 \u05d2",
    "reqd": 1
+  },
+  {
+   "fieldname": "section_break_twco",
+   "fieldtype": "Section Break",
+   "hidden": 1
+  },
+  {
+   "fetch_from": "coordinator.user_id",
+   "fieldname": "coordinator_user_id",
+   "fieldtype": "Link",
+   "label": "coordinator_user_id",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "coordinator.employee_name",
+   "fieldname": "coordinator_user_title",
+   "fieldtype": "Link",
+   "label": "coordinator_user_title",
+   "options": "Employee"
+  },
+  {
+   "fetch_from": "sector.sector_name",
+   "fieldname": "sector_title",
+   "fieldtype": "Link",
+   "label": "Sector_title",
+   "options": "Sector"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2025-07-14 21:06:01.869156",
+ "modified": "2025-07-18 22:19:32.545979",
  "modified_by": "Administrator",
  "module": "rb",
  "name": "Cluster",
