@@ -112,5 +112,43 @@
   "reference_doctype": "Evacuee",
   "script": "doc.full_name = f\"{doc.first_name or ''} {doc.last_name or ''}\".strip()\n",
   "script_type": "DocType Event"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": null,
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Save",
+  "enable_rate_limit": 0,
+  "event_frequency": "All",
+  "modified": "2025-07-18 14:11:05.354879",
+  "module": "rb",
+  "name": "validate phone number evacuee",
+  "rate_limit_count": 5,
+  "rate_limit_seconds": 86400,
+  "reference_doctype": "Evacuee",
+  "script": "# שלבים:\n# - הסרת תווים שאינם ספרות\n# - בדיקה אם יש 10 ספרות\n# - עיצוב לפורמט xxx-xxx-xxxx\n\nif not doc.phone_number:\n    frappe.throw(\"יש להזין מספר טלפון\")\n\n# הסר תווים לא מספריים (רק ספרות נשארות)\ndigits = ''.join([c for c in doc.phone_number if c.isdigit()])\n\nif len(digits) != 10:\n    frappe.throw(\"מספר הטלפון חייב להכיל 10 ספרות בדיוק\" + \"\\nבפורמט xxx-xxx-xxxx\")\n\n# הפורמט הסופי: xxx-xxx-xxxx\ndoc.phone_number = f\"{digits[:3]}-{digits[3:6]}-{digits[6:]}\"\n",
+  "script_type": "DocType Event"
+ },
+ {
+  "allow_guest": 0,
+  "api_method": null,
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "Before Insert",
+  "enable_rate_limit": 0,
+  "event_frequency": "Hourly",
+  "modified": "2025-07-20 09:47:40.684131",
+  "module": "rb",
+  "name": "calculate nested estimate and actual costs in task",
+  "rate_limit_count": 5,
+  "rate_limit_seconds": 86400,
+  "reference_doctype": null,
+  "script": "\n# Server Script: סכימת Estimated Cost ו-Actual Cost ממשימות בנות אל תוך משימת-אב\n# Script Type: Scheduled\n# Frequency: Daily (או כל תדירות אחרת לפי הצורך)\n\ndef update_parent_costs():\n    from frappe import db\n    from frappe.utils import flt\n\n    # שלוף את כל משימות האב (is_group = 1)\n    parent_tasks = db.get_all(\"Task\", filters={\"is_group\": 1}, fields=[\"name\"])\n\n    for parent in parent_tasks:\n        # שלוף את המשימות הבנות הישירות\n        children = db.get_all(\"Task\", filters={\"parent_task\": parent.name}, fields=[\"custom_estimated_cost\", \"custom_actual_cost\"])\n\n        total_estimated = sum(flt(child.custom_estimated_cost) for child in children)\n        total_actual = sum(flt(child.custom_actual_cost) for child in children)\n\n        # עדכן את משימת האב\n        db.set_value(\"Task\", parent.name, {\n            \"custom_estimated_cost\": total_estimated,\n            \"custom_actual_cost\": total_actual\n        })\n\nupdate_parent_costs()\n",
+  "script_type": "Scheduler Event"
  }
 ]
